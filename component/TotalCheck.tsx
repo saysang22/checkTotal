@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface TotalType {
   name: string;
   totalCheck: boolean;
@@ -7,11 +5,9 @@ interface TotalType {
 }
 
 const TotalCheck = ({ name, totalCheck, pTotalEv }: TotalType) => {
-  const [totalChild, setTotalChild] = useState(totalCheck);
-  //   console.log(totalChild);
 
   function totalEv(e: any) {
-    setTotalChild(!totalChild);
+
     pTotalEv(e);
   }
   return (
@@ -22,7 +18,7 @@ const TotalCheck = ({ name, totalCheck, pTotalEv }: TotalType) => {
           className="ck"
           style={{ display: "none" }}
           onChange={() => {}}
-          checked={totalChild}
+          checked={totalCheck}
         />
         <label
           htmlFor=""
@@ -34,7 +30,7 @@ const TotalCheck = ({ name, totalCheck, pTotalEv }: TotalType) => {
           <span className="ck_btn" id="test01"></span>
           <span
             className="ck_txt"
-            id={`${totalChild === true ? null : "test01"}`}
+            id={`${totalCheck === true ? null : "test01"}`}
           >
             {name}
           </span>

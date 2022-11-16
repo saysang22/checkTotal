@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface CheckType {
   name: string;
   check: boolean;
@@ -9,11 +7,11 @@ interface CheckType {
 [];
 
 const Check = ({ name, check, pcheckEv, labFristNm }: CheckType) => {
-  const [checkStatus, setCheckStatus] = useState(check);
 
   function checkEv() {
-    setCheckStatus(!checkStatus);
+
     pcheckEv();
+
   }
 
   return (
@@ -24,7 +22,7 @@ const Check = ({ name, check, pcheckEv, labFristNm }: CheckType) => {
           onChange={() => {}}
           className="ck"
           style={{ display: "none" }}
-          checked={checkStatus}
+          checked={check}
           name={name}
         />
         <label
