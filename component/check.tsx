@@ -1,17 +1,14 @@
 interface CheckType {
   name: string;
   check: boolean;
-  labFristNm?: string;
+  id: string;
   pcheckEv: () => void;
 }
 [];
 
-const Check = ({ name, check, pcheckEv, labFristNm }: CheckType) => {
-
+export const CheckBox = ({ name, check, id, pcheckEv }: CheckType) => {
   function checkEv() {
-
     pcheckEv();
-
   }
 
   return (
@@ -23,11 +20,11 @@ const Check = ({ name, check, pcheckEv, labFristNm }: CheckType) => {
           className="ck"
           style={{ display: "none" }}
           checked={check}
-          name={name}
+          id={id}
         />
         <label
-          htmlFor=""
           className="ck"
+          id={id}
           onClick={() => {
             checkEv();
           }}
@@ -53,17 +50,9 @@ const Check = ({ name, check, pcheckEv, labFristNm }: CheckType) => {
             box-sizing: border-box;
           }
 
-          .ck {
-            ${labFristNm !== undefined
-              ? " position: relative; margin: 0 0 0 30px;"
-              : ""}
-          }
           .ck_txt {
             display: inline-block;
             margin: 0 0 0 4px;
-            ${labFristNm !== undefined
-              ? "  position: absolute; top: 0; left: -35px;"
-              : ""}
           }
 
           .ck_btn:after {
@@ -84,7 +73,7 @@ const Check = ({ name, check, pcheckEv, labFristNm }: CheckType) => {
             transform: rotate(-45deg);
           }
           .ck:disabled + label .ck_btn {
-            border: 1px solid red;
+            border: 1px solid #333;
           }
         `}
       </style>
@@ -92,4 +81,4 @@ const Check = ({ name, check, pcheckEv, labFristNm }: CheckType) => {
   );
 };
 
-export default Check;
+export default CheckBox;

@@ -1,13 +1,12 @@
 interface TotalType {
   name: string;
   totalCheck: boolean;
+  id: string;
   pTotalEv: (e: any) => void;
 }
 
-const TotalCheck = ({ name, totalCheck, pTotalEv }: TotalType) => {
-
+const TotalCheck = ({ name, totalCheck, id, pTotalEv }: TotalType) => {
   function totalEv(e: any) {
-
     pTotalEv(e);
   }
   return (
@@ -28,15 +27,11 @@ const TotalCheck = ({ name, totalCheck, pTotalEv }: TotalType) => {
           }}
         >
           <span className="ck_btn" id="test01"></span>
-          <span
-            className="ck_txt"
-            id={`${totalCheck === true ? null : "test01"}`}
-          >
+          <span className="ck_txt" id={id}>
             {name}
           </span>
         </label>
       </div>
-
       <style jsx>
         {`
           /* CHECKBOX */
@@ -51,6 +46,11 @@ const TotalCheck = ({ name, totalCheck, pTotalEv }: TotalType) => {
             vertical-align: middle;
             background-color: #fff;
             box-sizing: border-box;
+          }
+
+          .ck_txt {
+            display: inline-block;
+            margin: 0 0 0 4px;
           }
 
           .ck_btn:after {
@@ -71,9 +71,7 @@ const TotalCheck = ({ name, totalCheck, pTotalEv }: TotalType) => {
             transform: rotate(-45deg);
           }
           .ck:disabled + label .ck_btn {
-            border: 1px solid red;
-          }
-
+            border: 1px solid #333;
           }
         `}
       </style>
